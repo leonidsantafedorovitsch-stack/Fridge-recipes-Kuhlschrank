@@ -8,628 +8,336 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --purple-deep:#1a0a2e;
-  --purple-mid:#2d1450;
-  --purple-light:#3d1a6e;
-  --gold:#ffd700;
-  --gold-dim:#c9a800;
-  --wood-dark:#4a2a0a;
-  --wood:#8B4513;
-  --wood-light:#a0522d;
-  --cream:#fdf6e3;
-  --glow:rgba(255,215,0,.35);
+  --purple-deep:#1a0a2e;--purple-mid:#2d1450;--purple-light:#3d1a6e;
+  --gold:#ffd700;--gold-dim:#c9a800;
+  --wood-dark:#4a2a0a;--wood:#8B4513;--wood-light:#a0522d;
+  --cream:#fdf6e3;--glow:rgba(255,215,0,.35);
 }
 html{scroll-behavior:smooth}
-body{
-  font-family:'Nunito',sans-serif;
-  background:var(--purple-deep);
-  color:var(--cream);
-  min-height:100vh;
-  overflow-x:hidden;
-}
-body::before{
-  content:'';position:fixed;inset:0;
-  background:
-    radial-gradient(ellipse at 20% 50%,rgba(61,26,110,.6) 0%,transparent 60%),
-    radial-gradient(ellipse at 80% 30%,rgba(45,20,80,.5) 0%,transparent 50%);
-  pointer-events:none;z-index:0;
-}
-
-/* ─── PARTICLES CANVAS ─── */
+body{font-family:'Nunito',sans-serif;background:var(--purple-deep);color:var(--cream);min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(61,26,110,.6) 0%,transparent 60%),radial-gradient(ellipse at 80% 30%,rgba(45,20,80,.5) 0%,transparent 50%);pointer-events:none;z-index:0}
 #particles{position:fixed;inset:0;pointer-events:none;z-index:9999}
 
-/* ─── HEADER ─── */
-header{
-  position:relative;z-index:1;
-  text-align:center;padding:3rem 1rem 1.5rem;
-}
-header h1{
-  font-family:'Playfair Display',serif;
-  font-style:italic;font-weight:700;
-  font-size:clamp(1.8rem,5vw,3.2rem);
-  color:var(--gold);
-  text-shadow:0 0 30px var(--glow),0 2px 4px rgba(0,0,0,.5);
-  animation:shimmer 3s ease-in-out infinite alternate;
-}
-header p{
-  margin-top:.7rem;font-size:1.05rem;
-  color:rgba(253,246,227,.6);
-  letter-spacing:.5px;
-}
-@keyframes shimmer{
-  0%{text-shadow:0 0 20px var(--glow),0 2px 4px rgba(0,0,0,.5)}
-  100%{text-shadow:0 0 40px var(--glow),0 0 60px rgba(255,215,0,.15),0 2px 4px rgba(0,0,0,.5)}
-}
+header{position:relative;z-index:1;text-align:center;padding:3rem 1rem 1.5rem}
+.monogram{display:inline-block;width:72px;height:72px;border:2px solid var(--gold);border-radius:50%;line-height:72px;font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:1.6rem;color:var(--gold);text-shadow:0 0 14px var(--glow);margin-bottom:.8rem;position:relative;background:radial-gradient(circle,rgba(255,215,0,.08),transparent);box-shadow:0 0 20px rgba(255,215,0,.15),inset 0 0 16px rgba(255,215,0,.06);animation:monogramPulse 4s ease-in-out infinite}
+.monogram::before,.monogram::after{content:'';position:absolute;background:var(--gold);opacity:.3;width:24px;height:1px;top:50%}
+.monogram::before{left:-28px}.monogram::after{right:-28px}
+@keyframes monogramPulse{0%,100%{box-shadow:0 0 20px rgba(255,215,0,.15),inset 0 0 16px rgba(255,215,0,.06)}50%{box-shadow:0 0 35px rgba(255,215,0,.25),inset 0 0 24px rgba(255,215,0,.1)}}
+header h1{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:clamp(1.8rem,5vw,3.2rem);color:var(--gold);text-shadow:0 0 30px var(--glow),0 2px 4px rgba(0,0,0,.5);animation:shimmer 3s ease-in-out infinite alternate}
+header p{margin-top:.7rem;font-size:1.05rem;color:rgba(253,246,227,.6);letter-spacing:.5px}
+@keyframes shimmer{0%{text-shadow:0 0 20px var(--glow),0 2px 4px rgba(0,0,0,.5)}100%{text-shadow:0 0 40px var(--glow),0 0 60px rgba(255,215,0,.15),0 2px 4px rgba(0,0,0,.5)}}
 
-/* ─── CONTAINER ─── */
-.container{
-  max-width:1060px;margin:0 auto;padding:0 1rem 3rem;
-  position:relative;z-index:1;
-}
-
-/* ─── FRIDGE ─── */
-.fridge-label{
-  font-family:'Playfair Display',serif;font-style:italic;
-  font-size:1.3rem;color:var(--gold);
-  text-align:center;margin-bottom:1rem;
-  text-shadow:0 0 12px var(--glow);
-}
-.fridge{
-  background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
-  border:2px solid rgba(255,215,0,.25);
-  border-radius:20px;padding:1.5rem;
-  backdrop-filter:blur(10px);
-  box-shadow:0 8px 32px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.08);
-}
-.fridge-grid{
-  display:grid;
-  grid-template-columns:repeat(8,1fr);
-  gap:.7rem;
-}
+.container{max-width:1060px;margin:0 auto;padding:0 1rem 3rem;position:relative;z-index:1}
+.fridge-label{font-family:'Playfair Display',serif;font-style:italic;font-size:1.3rem;color:var(--gold);text-align:center;margin-bottom:1rem;text-shadow:0 0 12px var(--glow)}
+.fridge{background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:2px solid rgba(255,215,0,.25);border-radius:20px;padding:1.5rem;backdrop-filter:blur(10px);box-shadow:0 8px 32px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.08)}
+.fridge-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:.7rem}
 @media(max-width:900px){.fridge-grid{grid-template-columns:repeat(4,1fr)}}
 @media(max-width:500px){.fridge-grid{grid-template-columns:repeat(3,1fr)}}
 
-/* ─── PRODUCT TILE ─── */
-.product-tile{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:.9rem .4rem;
-  border-radius:14px;
-  border:2px solid rgba(255,215,0,.12);
-  background:rgba(255,255,255,.04);
-  cursor:pointer;
-  transition:all .35s cubic-bezier(.4,0,.2,1);
-  user-select:none;
-  position:relative;overflow:hidden;
-}
-.product-tile::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(circle at 50% 100%,var(--glow) 0%,transparent 70%);
-  opacity:0;transition:opacity .35s;
-}
-.product-tile:hover{
-  transform:translateY(-4px) scale(1.06);
-  border-color:rgba(255,215,0,.4);
-  box-shadow:0 6px 20px rgba(0,0,0,.3);
-}
+.product-tile{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:.9rem .4rem;border-radius:14px;border:2px solid rgba(255,215,0,.12);background:rgba(255,255,255,.04);cursor:pointer;transition:all .35s cubic-bezier(.4,0,.2,1);user-select:none;position:relative;overflow:hidden}
+.product-tile::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 100%,var(--glow) 0%,transparent 70%);opacity:0;transition:opacity .35s}
+.product-tile:hover{transform:translateY(-4px) scale(1.06);border-color:rgba(255,215,0,.4);box-shadow:0 6px 20px rgba(0,0,0,.3)}
 .product-tile:hover::before{opacity:.3}
-.product-tile.selected{
-  border-color:var(--gold);
-  background:rgba(255,215,0,.14);
-  box-shadow:0 0 24px var(--glow),0 4px 16px rgba(0,0,0,.3);
-  transform:translateY(-2px) scale(1.08);
-  animation:selectedPulse 2s ease-in-out infinite;
-}
-@keyframes selectedPulse{
-  0%,100%{box-shadow:0 0 24px var(--glow),0 4px 16px rgba(0,0,0,.3)}
-  50%{box-shadow:0 0 36px var(--glow),0 0 50px rgba(255,215,0,.15),0 4px 16px rgba(0,0,0,.3)}
-}
+.product-tile.selected{border-color:var(--gold);background:rgba(255,215,0,.14);box-shadow:0 0 24px var(--glow),0 4px 16px rgba(0,0,0,.3);transform:translateY(-2px) scale(1.08);animation:selectedPulse 2s ease-in-out infinite}
+@keyframes selectedPulse{0%,100%{box-shadow:0 0 24px var(--glow),0 4px 16px rgba(0,0,0,.3)}50%{box-shadow:0 0 36px var(--glow),0 0 50px rgba(255,215,0,.15),0 4px 16px rgba(0,0,0,.3)}}
 .product-tile.selected::before{opacity:.5}
 .product-tile .icon{font-size:1.9rem;position:relative;z-index:1;transition:transform .3s}
 .product-tile.selected .icon{transform:scale(1.2);filter:drop-shadow(0 0 8px var(--gold));animation:iconBounce .5s}
 @keyframes iconBounce{0%{transform:scale(1)}50%{transform:scale(1.35)}100%{transform:scale(1.2)}}
-.product-tile .name{
-  margin-top:.3rem;font-size:.72rem;font-weight:600;
-  color:rgba(253,246,227,.7);position:relative;z-index:1;
-  transition:color .3s;
-}
+.product-tile .name{margin-top:.3rem;font-size:.72rem;font-weight:600;color:rgba(253,246,227,.7);position:relative;z-index:1;transition:color .3s}
 .product-tile.selected .name{color:var(--gold)}
 
-/* ─── SEARCH BUTTON ─── */
 .search-wrap{text-align:center;margin:1.8rem 0}
-.btn-search{
-  font-family:'Playfair Display',serif;font-style:italic;
-  font-size:1.15rem;font-weight:700;
-  padding:.85rem 2.6rem;
-  border:2px solid var(--gold);
-  border-radius:50px;
-  background:linear-gradient(135deg,rgba(255,215,0,.15),rgba(255,215,0,.05));
-  color:var(--gold);
-  cursor:pointer;
-  transition:all .35s;
-  text-shadow:0 0 10px var(--glow);
-  box-shadow:0 4px 20px rgba(0,0,0,.3);
-  letter-spacing:.5px;
-  position:relative;overflow:hidden;
-}
-.btn-search::after{
-  content:'';position:absolute;top:50%;left:50%;
-  width:0;height:0;border-radius:50%;
-  background:rgba(255,215,0,.2);
-  transform:translate(-50%,-50%);
-  transition:width .5s,height .5s;
-}
-.btn-search:hover{
-  background:linear-gradient(135deg,rgba(255,215,0,.3),rgba(255,215,0,.15));
-  box-shadow:0 4px 30px var(--glow),0 4px 20px rgba(0,0,0,.3);
-  transform:translateY(-2px);
-}
+.btn-search{font-family:'Playfair Display',serif;font-style:italic;font-size:1.15rem;font-weight:700;padding:.85rem 2.6rem;border:2px solid var(--gold);border-radius:50px;background:linear-gradient(135deg,rgba(255,215,0,.15),rgba(255,215,0,.05));color:var(--gold);cursor:pointer;transition:all .35s;text-shadow:0 0 10px var(--glow);box-shadow:0 4px 20px rgba(0,0,0,.3);letter-spacing:.5px;position:relative;overflow:hidden}
+.btn-search::after{content:'';position:absolute;top:50%;left:50%;width:0;height:0;border-radius:50%;background:rgba(255,215,0,.2);transform:translate(-50%,-50%);transition:width .5s,height .5s}
+.btn-search:hover{background:linear-gradient(135deg,rgba(255,215,0,.3),rgba(255,215,0,.15));box-shadow:0 4px 30px var(--glow),0 4px 20px rgba(0,0,0,.3);transform:translateY(-2px)}
 .btn-search:hover::after{width:300px;height:300px}
 .btn-search:active{transform:translateY(0) scale(.97)}
 
-/* ─── HINT ─── */
-.hint{
-  text-align:center;padding:2.5rem 1rem;
-  color:rgba(253,246,227,.45);font-size:1rem;
-  animation:fadeIn .5s;
-}
+.hint{text-align:center;padding:2.5rem 1rem;color:rgba(253,246,227,.45);font-size:1rem;animation:fadeIn .5s}
 .hint .hint-icon{font-size:2.5rem;display:block;margin-bottom:.8rem;opacity:.6}
 
-/* ─── RECIPES TITLE ─── */
-.recipes-title{
-  font-family:'Playfair Display',serif;font-style:italic;
-  font-size:1.3rem;color:var(--gold);
-  text-align:center;margin-bottom:1.4rem;
-  text-shadow:0 0 12px var(--glow);
-}
+.recipes-title{font-family:'Playfair Display',serif;font-style:italic;font-size:1.3rem;color:var(--gold);text-align:center;margin-bottom:1.4rem;text-shadow:0 0 12px var(--glow)}
 
-/* ─── RECIPE CARD ─── */
-.recipe-card{
-  position:relative;
-  margin-bottom:2rem;
-  perspective:1200px;
-  opacity:0;transform:translateY(40px);
-  animation:cardAppear .6s forwards;
-}
+.recipe-card{position:relative;margin-bottom:2rem;perspective:1200px;opacity:0;transform:translateY(40px);animation:cardAppear .6s forwards}
 @keyframes cardAppear{to{opacity:1;transform:translateY(0)}}
-
-/* ─── DOOR CONTAINER ─── */
-.door-container{
-  position:relative;
-  border-radius:18px;
-  min-height:90px;
-  overflow:visible;
-}
-.door-frame{
-  position:absolute;inset:-4px;
-  border:5px solid var(--wood-dark);
-  border-radius:20px;z-index:10;
-  pointer-events:none;
-  box-shadow:inset 0 0 20px rgba(0,0,0,.5);
-}
-.door-left,.door-right{
-  position:absolute;top:0;bottom:0;
-  width:50%;
-  z-index:5;
-  transition:transform 1.2s cubic-bezier(.23,1,.32,1);
-  cursor:pointer;
-}
-.door-left{
-  left:0;
-  transform-origin:left center;
-  background:
-    linear-gradient(90deg,rgba(0,0,0,.15) 0%,transparent 15%),
-    repeating-linear-gradient(0deg,
-      #3a1a05 0px,#5a3015 3px,#7a4525 6px,#6a3a1a 9px,
-      #8B4513 12px,#6a3a1a 15px,#5a3015 18px,#3a1a05 21px);
-  border-right:3px solid #2a1005;
-  box-shadow:inset -8px 0 20px rgba(0,0,0,.4);
-}
-.door-right{
-  right:0;
-  transform-origin:right center;
-  background:
-    linear-gradient(-90deg,rgba(0,0,0,.15) 0%,transparent 15%),
-    repeating-linear-gradient(0deg,
-      #3a1a05 0px,#5a3015 3px,#7a4525 6px,#6a3a1a 9px,
-      #8B4513 12px,#6a3a1a 15px,#5a3015 18px,#3a1a05 21px);
-  border-left:3px solid #2a1005;
-  box-shadow:inset 8px 0 20px rgba(0,0,0,.4);
-}
-/* Hinges */
-.door-left::before,.door-right::before{
-  content:'';position:absolute;
-  width:20px;height:8px;
-  background:linear-gradient(180deg,#c9a800,#8a6a00);
-  border-radius:2px;
-  box-shadow:0 1px 3px rgba(0,0,0,.5);
-}
-.door-left::before{left:0;top:25%}
-.door-right::before{right:0;top:25%}
-.door-left::after,.door-right::after{
-  content:'';position:absolute;
-  width:20px;height:8px;
-  background:linear-gradient(180deg,#c9a800,#8a6a00);
-  border-radius:2px;
-  box-shadow:0 1px 3px rgba(0,0,0,.5);
-}
-.door-left::after{left:0;bottom:25%}
-.door-right::after{right:0;bottom:25%}
-
-/* Handles */
-.door-handle-left,.door-handle-right{
-  position:absolute;top:50%;z-index:6;
-  width:18px;height:18px;border-radius:50%;
-  background:radial-gradient(circle at 35% 35%,#ffe680,var(--gold-dim),#6b4c00);
-  box-shadow:0 2px 6px rgba(0,0,0,.6),0 0 12px var(--glow);
-  transform:translateY(-50%);
-  transition:all .3s;
-}
-.door-handle-left{right:14px}
-.door-handle-right{left:14px}
-
-/* Door opening */
-.recipe-card.opening .door-left{
-  transform:rotateY(-120deg) translateX(-5%);
-  transition:transform 1.4s cubic-bezier(.23,1,.32,1);
-}
-.recipe-card.opening .door-right{
-  transform:rotateY(120deg) translateX(5%);
-  transition:transform 1.4s cubic-bezier(.23,1,.32,1);
-}
-
-/* Light behind doors */
-.door-light{
-  position:absolute;inset:0;z-index:2;
-  border-radius:16px;
-  background:radial-gradient(ellipse at 50% 50%,rgba(255,215,0,.25),rgba(255,200,0,.08) 40%,transparent 70%);
-  opacity:0;
-  transition:opacity .8s .3s;
-  pointer-events:none;
-}
+.door-container{position:relative;border-radius:18px;min-height:90px;overflow:visible;cursor:pointer}
+.door-frame{position:absolute;inset:-4px;border:5px solid var(--wood-dark);border-radius:20px;z-index:10;pointer-events:none;box-shadow:inset 0 0 20px rgba(0,0,0,.5)}
+.door-left,.door-right{position:absolute;top:0;bottom:0;width:50%;z-index:5;transition:transform 1.2s cubic-bezier(.23,1,.32,1)}
+.door-left{left:0;transform-origin:left center;background:linear-gradient(90deg,rgba(0,0,0,.15) 0%,transparent 15%),repeating-linear-gradient(0deg,#3a1a05 0px,#5a3015 3px,#7a4525 6px,#6a3a1a 9px,#8B4513 12px,#6a3a1a 15px,#5a3015 18px,#3a1a05 21px);border-right:3px solid #2a1005;box-shadow:inset -8px 0 20px rgba(0,0,0,.4)}
+.door-right{right:0;transform-origin:right center;background:linear-gradient(-90deg,rgba(0,0,0,.15) 0%,transparent 15%),repeating-linear-gradient(0deg,#3a1a05 0px,#5a3015 3px,#7a4525 6px,#6a3a1a 9px,#8B4513 12px,#6a3a1a 15px,#5a3015 18px,#3a1a05 21px);border-left:3px solid #2a1005;box-shadow:inset 8px 0 20px rgba(0,0,0,.4)}
+.door-left::before,.door-right::before{content:'';position:absolute;width:20px;height:8px;background:linear-gradient(180deg,#c9a800,#8a6a00);border-radius:2px;box-shadow:0 1px 3px rgba(0,0,0,.5)}
+.door-left::before{left:0;top:25%}.door-right::before{right:0;top:25%}
+.door-left::after,.door-right::after{content:'';position:absolute;width:20px;height:8px;background:linear-gradient(180deg,#c9a800,#8a6a00);border-radius:2px;box-shadow:0 1px 3px rgba(0,0,0,.5)}
+.door-left::after{left:0;bottom:25%}.door-right::after{right:0;bottom:25%}
+.door-handle-left,.door-handle-right{position:absolute;top:50%;z-index:6;width:18px;height:18px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ffe680,var(--gold-dim),#6b4c00);box-shadow:0 2px 6px rgba(0,0,0,.6),0 0 12px var(--glow);transform:translateY(-50%)}
+.door-handle-left{right:14px}.door-handle-right{left:14px}
+.door-light{position:absolute;inset:0;z-index:2;border-radius:16px;background:radial-gradient(ellipse at 50% 50%,rgba(255,215,0,.25),rgba(255,200,0,.08) 40%,transparent 70%);opacity:0;transition:opacity .8s .3s;pointer-events:none}
+.recipe-card.opening .door-left{transform:rotateY(-120deg) translateX(-5%);transition:transform 1.4s cubic-bezier(.23,1,.32,1)}
+.recipe-card.opening .door-right{transform:rotateY(120deg) translateX(5%);transition:transform 1.4s cubic-bezier(.23,1,.32,1)}
 .recipe-card.opening .door-light{opacity:1}
 
-/* ─── RECIPE CONTENT ─── */
-.recipe-content{
-  position:relative;z-index:1;
-  padding:1.8rem;
-  border-radius:18px;
-  border:2px solid rgba(255,215,0,.2);
-  background:
-    linear-gradient(145deg,rgba(139,69,19,.2),rgba(139,69,19,.05)),
-    linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.01));
-  box-shadow:0 8px 40px rgba(0,0,0,.5),0 0 60px rgba(255,215,0,.08),inset 0 1px 0 rgba(255,255,255,.08);
-  opacity:0;
-  transform:scale(.92) translateY(10px);
-  transition:opacity .7s .5s,transform .7s .5s;
-}
+.recipe-content{position:relative;z-index:1;padding:1.8rem;border-radius:18px;border:2px solid rgba(255,215,0,.2);background:linear-gradient(145deg,rgba(139,69,19,.2),rgba(139,69,19,.05)),linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.01));box-shadow:0 8px 40px rgba(0,0,0,.5),0 0 60px rgba(255,215,0,.08),inset 0 1px 0 rgba(255,255,255,.08);opacity:0;transform:scale(.92) translateY(10px);transition:opacity .7s .5s,transform .7s .5s}
 .recipe-card.opening .recipe-content{opacity:1;transform:scale(1) translateY(0)}
-
-.recipe-header{
-  display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:.5rem;
-  margin-bottom:1rem;padding-bottom:.8rem;
-  border-bottom:1px solid rgba(255,215,0,.15);
-}
-.recipe-name{
-  font-family:'Playfair Display',serif;font-style:italic;
-  font-weight:700;font-size:1.3rem;
-  color:var(--gold);
-  text-shadow:0 0 10px var(--glow);
-}
-.recipe-time{
-  font-size:.82rem;font-weight:600;
-  padding:.35rem .9rem;border-radius:20px;
-  background:rgba(255,215,0,.12);color:var(--gold);
-  border:1px solid rgba(255,215,0,.25);
-}
-.recipe-ingredients{
-  display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem;
-}
-.recipe-ingredients span{
-  font-size:.78rem;padding:.25rem .65rem;border-radius:12px;
-  background:rgba(255,255,255,.08);
-  color:rgba(253,246,227,.7);
-  border:1px solid rgba(255,255,255,.1);
-}
+.recipe-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem;padding-bottom:.8rem;border-bottom:1px solid rgba(255,215,0,.15)}
+.recipe-name{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:1.3rem;color:var(--gold);text-shadow:0 0 10px var(--glow)}
+.recipe-time{font-size:.82rem;font-weight:600;padding:.35rem .9rem;border-radius:20px;background:rgba(255,215,0,.12);color:var(--gold);border:1px solid rgba(255,215,0,.25)}
+.recipe-ingredients{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+.ing-tag{font-size:.78rem;padding:.3rem .7rem;border-radius:12px;background:rgba(255,255,255,.08);color:rgba(253,246,227,.7);border:1px solid rgba(255,255,255,.1);display:inline-flex;align-items:center;gap:.35rem}
+.ing-amt{color:var(--gold);font-weight:700;font-size:.72rem;background:rgba(255,215,0,.12);padding:.1rem .4rem;border-radius:8px;white-space:nowrap}
 .recipe-steps{list-style:none;counter-reset:step}
-.recipe-steps li{
-  counter-increment:step;
-  padding:.5rem 0 .5rem 2.4rem;
-  position:relative;font-size:.9rem;line-height:1.5;
-  color:rgba(253,246,227,.85);
-  opacity:0;transform:translateX(-15px);
-  animation:stepIn .4s forwards;
-}
-.recipe-steps li:nth-child(1){animation-delay:1s}
-.recipe-steps li:nth-child(2){animation-delay:1.2s}
-.recipe-steps li:nth-child(3){animation-delay:1.4s}
-.recipe-steps li:nth-child(4){animation-delay:1.6s}
-.recipe-steps li:nth-child(5){animation-delay:1.8s}
-.recipe-steps li::before{
-  content:counter(step);
-  position:absolute;left:0;top:.5rem;
-  width:1.6rem;height:1.6rem;border-radius:50%;
-  background:rgba(255,215,0,.15);
-  border:1px solid rgba(255,215,0,.3);
-  color:var(--gold);font-weight:700;font-size:.75rem;
-  display:flex;align-items:center;justify-content:center;
-}
+.recipe-steps li{counter-increment:step;padding:.5rem 0 .5rem 2.4rem;position:relative;font-size:.9rem;line-height:1.5;color:rgba(253,246,227,.85);opacity:0;transform:translateX(-15px);animation:stepIn .4s forwards}
+.recipe-steps li:nth-child(1){animation-delay:1s}.recipe-steps li:nth-child(2){animation-delay:1.2s}.recipe-steps li:nth-child(3){animation-delay:1.4s}.recipe-steps li:nth-child(4){animation-delay:1.6s}.recipe-steps li:nth-child(5){animation-delay:1.8s}
+.recipe-steps li::before{content:counter(step);position:absolute;left:0;top:.5rem;width:1.6rem;height:1.6rem;border-radius:50%;background:rgba(255,215,0,.15);border:1px solid rgba(255,215,0,.3);color:var(--gold);font-weight:700;font-size:.75rem;display:flex;align-items:center;justify-content:center}
 @keyframes stepIn{to{opacity:1;transform:translateX(0)}}
+.open-hint{text-align:center;margin-top:1rem;opacity:.5;font-size:.82rem;color:var(--gold)}
 
-/* ─── BACK BUTTON ─── */
 .back-wrap{text-align:center;margin-top:1.8rem}
-.btn-back{
-  font-family:'Nunito',sans-serif;font-weight:700;
-  font-size:.95rem;padding:.65rem 2rem;
-  border:1px solid rgba(255,215,0,.3);border-radius:30px;
-  background:rgba(255,215,0,.08);color:var(--gold);
-  cursor:pointer;transition:all .3s;
-}
-.btn-back:hover{
-  background:rgba(255,215,0,.18);
-  box-shadow:0 4px 16px rgba(0,0,0,.3);
-  transform:translateY(-2px);
-}
+.btn-back{font-family:'Nunito',sans-serif;font-weight:700;font-size:.95rem;padding:.65rem 2rem;border:1px solid rgba(255,215,0,.3);border-radius:30px;background:rgba(255,215,0,.08);color:var(--gold);cursor:pointer;transition:all .3s}
+.btn-back:hover{background:rgba(255,215,0,.18);box-shadow:0 4px 16px rgba(0,0,0,.3);transform:translateY(-2px)}
 
-/* ─── FOOTER ─── */
-footer{
-  position:relative;z-index:1;
-  text-align:center;padding:2rem 1rem;
-  color:rgba(253,246,227,.25);font-size:.8rem;
-}
+.modal-overlay{position:fixed;inset:0;z-index:10000;background:rgba(10,4,20,.92);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
+.modal-overlay.active{opacity:1;visibility:visible}
+.modal-overlay.active .modal-box{transform:scale(1) translateY(0);opacity:1}
+.modal-box{position:relative;width:min(92vw,680px);max-height:88vh;overflow-y:auto;background:linear-gradient(145deg,rgba(45,20,80,.95),rgba(26,10,46,.98));border:2px solid rgba(255,215,0,.25);border-radius:22px;padding:2.2rem 2rem 2rem;box-shadow:0 12px 60px rgba(0,0,0,.7),0 0 80px rgba(255,215,0,.08);transform:scale(.92) translateY(30px);opacity:0;transition:transform .5s cubic-bezier(.23,1,.32,1),opacity .4s}
+.modal-close{position:absolute;top:1rem;right:1rem;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,215,0,.3);background:rgba(255,215,0,.08);color:var(--gold);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;z-index:2}
+.modal-close:hover{background:rgba(255,215,0,.2);transform:scale(1.1)}
+.modal-title{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:1.6rem;color:var(--gold);text-shadow:0 0 14px var(--glow);margin-bottom:.3rem;padding-right:2.5rem}
+.modal-time{display:inline-block;font-size:.85rem;font-weight:600;padding:.3rem .9rem;border-radius:20px;background:rgba(255,215,0,.12);color:var(--gold);border:1px solid rgba(255,215,0,.25);margin-bottom:1.4rem}
+.modal-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,215,0,.25),transparent);margin:1.2rem 0}
+.modal-section-title{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;font-weight:700;color:var(--gold);margin-bottom:.7rem;text-shadow:0 0 8px var(--glow)}
+.modal-ingredients{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.5rem}
+.modal-ingredients .ing-tag{font-size:.82rem;padding:.35rem .75rem}
+.modal-steps{list-style:none;counter-reset:mstep}
+.modal-steps li{counter-increment:mstep;padding:.6rem 0 .6rem 2.8rem;position:relative;font-size:.92rem;line-height:1.6;color:rgba(253,246,227,.88);opacity:0;transform:translateY(10px);animation:modalStepIn .4s forwards}
+.modal-steps li:nth-child(1){animation-delay:.15s}.modal-steps li:nth-child(2){animation-delay:.25s}.modal-steps li:nth-child(3){animation-delay:.35s}.modal-steps li:nth-child(4){animation-delay:.45s}.modal-steps li:nth-child(5){animation-delay:.55s}.modal-steps li:nth-child(6){animation-delay:.65s}
+.modal-steps li::before{content:counter(mstep);position:absolute;left:0;top:.6rem;width:1.8rem;height:1.8rem;border-radius:50%;background:rgba(255,215,0,.15);border:1.5px solid rgba(255,215,0,.35);color:var(--gold);font-weight:700;font-size:.8rem;display:flex;align-items:center;justify-content:center}
+@keyframes modalStepIn{to{opacity:1;transform:translateY(0)}}
+.modal-tips{margin-top:1rem;padding:.8rem 1rem;border-radius:12px;background:rgba(255,215,0,.06);border:1px solid rgba(255,215,0,.15);font-size:.82rem;color:rgba(253,246,227,.55);line-height:1.5}
+.modal-tips strong{color:var(--gold)}
 
-/* ─── ANIMATIONS ─── */
+footer{position:relative;z-index:1;text-align:center;padding:2rem 1rem;color:rgba(253,246,227,.25);font-size:.8rem}
 @keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 @keyframes popIn{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
-.fade-in{animation:fadeIn .5s both}
-.pop-in{animation:popIn .4s both}
-
-/* ─── SCROLLBAR ─── */
-::-webkit-scrollbar{width:8px}
-::-webkit-scrollbar-track{background:var(--purple-deep)}
-::-webkit-scrollbar-thumb{background:var(--purple-light);border-radius:4px}
-::-webkit-scrollbar-thumb:hover{background:var(--gold-dim)}
+.fade-in{animation:fadeIn .5s both}.pop-in{animation:popIn .4s both}
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:var(--purple-deep)}::-webkit-scrollbar-thumb{background:var(--purple-light);border-radius:4px}::-webkit-scrollbar-thumb:hover{background:var(--gold-dim)}
 </style>
 </head>
 <body>
 
 <canvas id="particles"></canvas>
 
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal-box" id="modalBox" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
 <header>
+  <div class="monogram">LM</div>
   <h1>Что в холодильнике?</h1>
   <p>Выберите продукты и откройте двери к вкусным рецептам</p>
 </header>
 
 <div class="container">
   <p class="fridge-label">❄️ Ваш холодильник</p>
-  <div class="fridge">
-    <div class="fridge-grid" id="fridgeGrid"></div>
-  </div>
-
-  <div class="search-wrap">
-    <button class="btn-search" id="searchBtn" onclick="findRecipes()">🚪 Найти рецепты</button>
-  </div>
-
-  <div id="hintArea">
-    <div class="hint">
-      <span class="hint-icon">🧊</span>
-      Нажмите на продукты в холодильнике,<br>чтобы подобрать рецепты
-    </div>
-  </div>
-
+  <div class="fridge"><div class="fridge-grid" id="fridgeGrid"></div></div>
+  <div class="search-wrap"><button class="btn-search" onclick="findRecipes()">🚪 Найти рецепты</button></div>
+  <div id="hintArea"><div class="hint"><span class="hint-icon">🧊</span>Нажмите на продукты в холодильнике,<br>чтобы подобрать рецепты</div></div>
   <div id="recipesArea"></div>
 </div>
 
 <footer>Сделано с любовью к еде и деревенскому уюту</footer>
 
 <script>
-const PRODUCTS=[
-  {id:'chicken',name:'Курица',emoji:'🍗'},
-  {id:'tomato',name:'Томаты',emoji:'🍅'},
-  {id:'cheese',name:'Сыр',emoji:'🧀'},
-  {id:'egg',name:'Яйца',emoji:'🥚'},
-  {id:'pasta',name:'Макароны',emoji:'🍝'},
-  {id:'mushroom',name:'Грибы',emoji:'🍄'},
-  {id:'potato',name:'Картофель',emoji:'🥔'},
-  {id:'milk',name:'Молоко',emoji:'🥛'},
-  {id:'bread',name:'Хлеб',emoji:'🍞'},
-  {id:'onion',name:'Лук',emoji:'🧅'},
-  {id:'garlic',name:'Чеснок',emoji:'🧄'},
-  {id:'carrot',name:'Морковь',emoji:'🥕'},
-  {id:'butter',name:'Масло',emoji:'🧈'},
-  {id:'rice',name:'Рис',emoji:'🍚'},
-  {id:'sausage',name:'Сосиски',emoji:'🌭'},
-  {id:'apple',name:'Яблоко',emoji:'🍎'}
+var PRODUCTS=[
+  {id:'chicken',name:'Курица',emoji:'🍗'},{id:'tomato',name:'Томаты',emoji:'🍅'},
+  {id:'cheese',name:'Сыр',emoji:'🧀'},{id:'egg',name:'Яйца',emoji:'🥚'},
+  {id:'pasta',name:'Макароны',emoji:'🍝'},{id:'mushroom',name:'Грибы',emoji:'🍄'},
+  {id:'potato',name:'Картофель',emoji:'🥔'},{id:'milk',name:'Молоко',emoji:'🥛'},
+  {id:'bread',name:'Хлеб',emoji:'🍞'},{id:'onion',name:'Лук',emoji:'🧅'},
+  {id:'garlic',name:'Чеснок',emoji:'🧄'},{id:'carrot',name:'Морковь',emoji:'🥕'},
+  {id:'butter',name:'Масло',emoji:'🧈'},{id:'rice',name:'Рис',emoji:'🍚'},
+  {id:'sausage',name:'Сосиски',emoji:'🌭'},{id:'apple',name:'Яблоко',emoji:'🍎'}
 ];
 
-const RECIPES=[
-  {name:"Куриные наггетсы",time:"25 мин",ingredients:['chicken','egg','cheese'],steps:["Нарежьте курицу на порционные кусочки.","Взбейте яйца, добавьте соль и перец.","Обваляйте кусочки в яйце, затем в тёртом сыре.","Выложите на противень и запекайте 20 минут при 190°C."]},
-  {name:"Омлет с грибами и сыром",time:"15 мин",ingredients:['egg','mushroom','cheese'],steps:["Нарежьте грибы тонкими пластинами и обжарьте.","Взбейте яйца с молоком, солью и перцем.","Залейте грибы яичной смесью, посыпьте сыром.","Готовьте на среднем огне 8–10 минут под крышкой."]},
-  {name:"Паста с томатным соусом",time:"20 мин",ingredients:['pasta','tomato'],steps:["Отварите макароны в подсоленной воде.","Томаты нарежьте кубиками и обжарьте.","Добавьте соль, перец и базилик.","Смешайте пасту с соусом и подавайте горячей."]},
-  {name:"Картофельное пюре",time:"30 мин",ingredients:['potato','milk','butter'],steps:["Очистите и нарежьте картофель, отварите.","Слейте воду и разомните картофель.","Добавьте тёплое молоко и растопленное масло.","Вбейте яйцо, перемешайте до однородности."]},
-  {name:"Сырники",time:"20 мин",ingredients:['egg','cheese','milk'],steps:["Смешайте творог с яйцом и сахаром.","Добавьте муку и замесите мягкое тесто.","Сформируйте лепёшки и обваляйте в муке.","Обжаривайте по 3 минуты с каждой стороны."]},
-  {name:"Грибной суп-пюре",time:"35 мин",ingredients:['mushroom','potato','milk'],steps:["Нарежьте грибы и лук, обжарьте.","Добавьте картофель и залейте водой.","Варите 20 минут до мягкости.","Взбейте блендером, добавьте молоко."]},
-  {name:"Запечённая курица с картофелем",time:"50 мин",ingredients:['chicken','potato','onion'],steps:["Нарежьте картофель дольками.","Разложите кусочки курицы сверху.","Сбрызните маслом и добавьте специи.","Запекайте 40–45 минут при 200°C."]},
-  {name:"Домашняя лазанья",time:"45 мин",ingredients:['pasta','tomato','cheese','milk'],steps:["Отварите листы пасты до полуготовности.","Приготовите томатный соус.","Выкладывайте слоями: паста, соус, сыр, молочный соус.","Повторите 3–4 слоя, запекайте 25 минут."]},
-  {name:"Картофель по-деревенски",time:"30 мин",ingredients:['potato','cheese','egg'],steps:["Нарежьте картофель крупными дольками.","Смешайте яйцо с сыром и специями.","Обваляйте картофель в сырной смеси.","Запекайте 25 минут при 200°C."]},
-  {name:"Томатный крем-суп",time:"25 мин",ingredients:['tomato','potato','milk'],steps:["Нарежьте томаты и картофель.","Обжарьте лук, добавьте овощи, залейте бульоном.","Варите 15 минут.","Взбейте блендером, влейте молоко."]},
-  {name:"Жареная картошка с грибами",time:"25 мин",ingredients:['potato','mushroom','onion'],steps:["Нарежьте картофель брусочками.","Обжарьте до золотистости.","Добавьте грибы и жарьте ещё 8 минут.","Посолите, поперчите и подавайте."]},
-  {name:"Макароны по-флотски",time:"25 мин",ingredients:['pasta','sausage','egg'],steps:["Отварите макароны до готовности.","Мелко нарежьте сосиски и обжарьте.","Добавьте макароны, посыпьте зеленью.","Смешайте с яйцом и прогрейте."]},
-  {name:"Фrittata с помидорами",time:"20 мин",ingredients:['egg','tomato','cheese'],steps:["Взбейте яйца с солью и перцем.","Нарежьте помидоры кольцами.","Вылейте яйца на сковороду, разложите помидоры.","Посыпьте сыром, готовьте 10 минут под крышкой."]},
-  {name:"Сковородная пицца",time:"20 мин",ingredients:['pasta','tomato','cheese','egg'],steps:["Смешайте муку, яйцо и молоко в тесто.","Вылейте тонким слоем на разогретую сковороду.","Смажьте соусом, посыпьте сыром.","Накройте крышкой, готовьте 10 минут."]},
-  {name:"Грибной крем-суп",time:"30 мин",ingredients:['mushroom','milk','potato','garlic'],steps:["Обжарьте грибы с луком и чесноком.","Добавьте картофель и бульон.","Варите 15 минут, взбейте блендером.","Влейте горячее молоко и подавайте."]},
-  {name:"Куриный салат",time:"15 мин",ingredients:['chicken','tomato','egg'],steps:["Отварите яйца и нарежьте кубиками.","Нарежьте курицу и помидоры.","Смешайте все ингредиенты.","Заправьте маслом и подавайте."]},
-  {name:"Запечённые яйца в грибах",time:"20 мин",ingredients:['egg','mushroom','cheese'],steps:["Отделите шляпки грибов.","Разбейте по яйцу в каждую шляпку.","Посыпьте сыром, поставьте в духовку.","Запекайте 12–15 минут при 180°C."]},
-  {name:"Крем-паста",time:"18 мин",ingredients:['pasta','milk','cheese','butter'],steps:["Отварите пасту аль-денте.","Нагрейте молоко с маслом и сыром.","Помешивайте до расплавления сыра.","Заправьте пасту и подавайте сразу."]},
-  {name:"Бутерброды с яйцом",time:"10 мин",ingredients:['bread','egg','butter'],steps:["Отварите яйца вкрутую.","Нарежьте хлеб ломтиками.","Смажьте маслом, выложите яйца.","Посолите и подавайте."]},
-  {name:"Рисовый суп с морковью",time:"30 мин",ingredients:['rice','carrot','onion'],steps:["Обжарьте лук и морковь.","Добавьте рис и залейте бульоном.","Варите 20 минут до готовности риса.","Посолите, добавьте зелень."]},
-  {name:"Сосиски в тесте",time:"25 мин",ingredients:['sausage','egg','bread'],steps:["Взбейте яйца с молоком.","Нарежьте хлеб, обмакните в яйцо.","Оберните сосиски хлебом.","Обжарьте до золотистости на сковороде."]},
-  {name:"Яблочный пирог",time:"40 мин",ingredients:['apple','egg','butter'],steps:["Нарежьте яблоки дольками.","Смешайте яйца с маслом и сахаром.","Выложите яблоки в форму, залейте тестом.","Запекайте 30 минут при 180°C."]},
-  {name:"Чесночные тосты",time:"10 мин",ingredients:['bread','garlic','butter','cheese'],steps:["Нарежьте хлеб ломтиками.","Смажьте маслом с чесноком.","Посыпьте тёртым сыром.","Запекайте 5 минут до расплавления сыра."]},
-  {name:"Картофельные драники",time:"25 мин",ingredients:['potato','egg','onion'],steps:["Натрите картофель на мелкой тёрке.","Добавьте яйцо и мелко нарезанный лук.","Посолите и перемешайте.","Жарьте по 3 минуты с каждой стороны."]}
+var RECIPES=[
+  {name:"Куриные наггетсы",time:"25 мин",ingredients:[{id:'chicken',amt:'500 г'},{id:'egg',amt:'2 шт'},{id:'cheese',amt:'100 г'}],steps:["Нарежьте курицу на порционные кусочки размером 3–4 см.","Взбейте яйца в глубокой тарелке, добавьте щепотку соли и чёрного перца.","Обваляйте каждый кусочек сначала в яйце, затем в мелко тёртом сыре.","Выложите на противень, застеленный пергаментом.","Запекайте в разогретой до 190°C духовке 18–20 минут до золотистости."],tips:"Для хрустящей корочки добавьте в тёртый сыр панировочные сухари. Подавайте с соусом из сметаны и зелени.",servings:"На 3–4 порции"},
+  {name:"Омлет с грибами и сыром",time:"15 мин",ingredients:[{id:'egg',amt:'4 шт'},{id:'mushroom',amt:'200 г'},{id:'cheese',amt:'80 г'}],steps:["Грибы нарежьте тонкими пластинами и обжарьте на сковороде с маслом до золотистости.","Взбейте яйца с 2 ст.л. молока, солью и перцем.","Вылейте яичную смесь на грибы, равномерно распределите.","Посыпьте тёртым сыром, закройте крышкой.","Готовьте на среднем огне 8–10 минут до подрумянивания сверху."],tips:"Омлет получится пышнее, если взбивать яйца венчиком, а не вилкой.",servings:"На 2 порции"},
+  {name:"Паста с томатным соусом",time:"20 мин",ingredients:[{id:'pasta',amt:'300 г'},{id:'tomato',amt:'4 шт'}],steps:["Отварите макароны в большом количестве подсоленной воды до аль-денте.","Томаты нарежьте мелкими кубиками.","Обжарьте томаты на сковороде 5–7 минут, разминая вилкой.","Добавьте соль, чёрный перец и свежий базилик.","Смешайте готовую пасту с соусом и подавайте горячей."],tips:"Соус станет насыщеннее, если добавить 1 ст.л. томатной пасты.",servings:"На 3 порции"},
+  {name:"Картофельное пюре",time:"30 мин",ingredients:[{id:'potato',amt:'800 г'},{id:'milk',amt:'150 мл'},{id:'butter',amt:'50 г'}],steps:["Очистите картофель, нарежьте крупными кусочками.","Отварите в подсоленной воде 18–20 минут до мягкости.","Слейте воду, оставив немного на дне кастрюли.","Разомните картофель толкушкой, постепенно добавляя тёплое молоко и растопленное масло.","Перемешайте до однородной нежной консистенции."],tips:"Молоко предварительно подогрейте — так пюре не будет остывать.",servings:"На 4 порции"},
+  {name:"Сырники",time:"20 мин",ingredients:[{id:'egg',amt:'2 шт'},{id:'cheese',amt:'250 г'},{id:'milk',amt:'50 мл'}],steps:["Смешайте творог с яйцами, сахаром и щепоткой соли.","Добавьте 3–4 ст.л. муки и замесите мягкое тесто.","Сформируйте лепёшки толщиной около 1,5 см.","Обваляйте каждую в муке и обжаривайте по 3 минуты с каждой стороны."],tips:"Творог должен быть сухим — откиньте на сито за час до готовки.",servings:"На 2–3 порции"},
+  {name:"Грибной суп-пюре",time:"35 мин",ingredients:[{id:'mushroom',amt:'300 г'},{id:'potato',amt:'2 шт'},{id:'milk',amt:'200 мл'}],steps:["Нарежьте грибы и лук, обжарьте на сковороде до золотистости.","Картофель нарежьте кубиками и добавьте к грибам.","Залейте 600 мл воды или бульона и варите 20 минут.","Взбейте суп блендером до однородности.","Влейте тёплое молоко, посолите и прогрейте."],tips:"Суп подавайте с гренками и сливками.",servings:"На 3 порции"},
+  {name:"Запечённая курица с картофелем",time:"50 мин",ingredients:[{id:'chicken',amt:'700 г'},{id:'potato',amt:'5 шт'},{id:'onion',amt:'1 шт'}],steps:["Картофель нарежьте крупными дольками, лук — полукольцами.","Выложите овощи на дно противня, посолите и поперчите.","Сверху разложите кусочки курицы, сбрызните маслом.","Добавьте специи: паприку, розмарин, чеснок.","Запекайте при 200°C 40–45 минут до румяной корочки."],tips:"За 10 минут до готовности можно посыпать тёртым сыром.",servings:"На 4 порции"},
+  {name:"Домашняя лазанья",time:"45 мин",ingredients:[{id:'pasta',amt:'250 г'},{id:'tomato',amt:'3 шт'},{id:'cheese',amt:'200 г'},{id:'milk',amt:'300 мл'}],steps:["Отварите листы пасты до полуготовности, откиньте на дуршлаг.","Приготовите томатный соус: обжарьте лук, добавьте нарезанные томаты.","Приготовите молочный соус: нагрейте молоко с 1 ст.л. муки и маслом.","Выкладывайте слоями: паста, соус, сыр, молочный соус.","Повторите 3–4 слоя. Запекайте при 180°C 25 минут."],tips:"Лазанья вкуснее на следующий день — она пропитается.",servings:"На 4 порции"},
+  {name:"Картофель по-деревенски",time:"30 мин",ingredients:[{id:'potato',amt:'1 кг'},{id:'cheese',amt:'100 г'},{id:'egg',amt:'2 шт'}],steps:["Картофель нарежьте крупными дольками толщиной 1 см.","Взбейте яйца с тёртым сыром, солью и специями.","Обваляйте каждую дольку в сырной смеси.","Выложите на противень с пергаментом в один слой.","Запекайте при 200°C 25 минут, перевернув через 15 минут."],tips:"Для остроты добавьте в смесь чесночный порошок и паприку.",servings:"На 3–4 порции"},
+  {name:"Томатный крем-суп",time:"25 мин",ingredients:[{id:'tomato',amt:'5 шт'},{id:'potato',amt:'2 шт'},{id:'milk',amt:'200 мл'}],steps:["Томаты и картофель нарежьте кубиками.","Обжарьте лук, добавьте овощи и залейте 500 мл бульона.","Варите 15 минут до мягкости картофеля.","Взбейте блендером до однородности.","Влейте тёплое молоко, посолите и подогрейте."],tips:"Добавьте 1 ст.л. томатной пасты и щепотку корицы.",servings:"На 3 порции"},
+  {name:"Жареная картошка с грибами",time:"25 мин",ingredients:[{id:'potato',amt:'600 г'},{id:'mushroom',amt:'250 г'},{id:'onion',amt:'1 шт'}],steps:["Картофель нарежьте брусочками толщиной 1 см.","Обжарьте на среднем огне до золотистости 12–15 минут.","Грибы нарежьте пластинами, лук — полукольцами.","Добавьте грибы с луком к картофелю, жарьте ещё 8 минут.","Посолите, поперчите, посыпьте зеленью."],tips:"Не перемешивайте картофель слишком часто — дайте подрумяниться.",servings:"На 3 порции"},
+  {name:"Макароны по-флотски",time:"25 мин",ingredients:[{id:'pasta',amt:'300 г'},{id:'sausage',amt:'6 шт'},{id:'egg',amt:'2 шт'}],steps:["Отварите макароны в подсоленной воде до готовности.","Сосиски нарежьте мелкими кубиками и обжарьте.","Добавьте макароны к сосискам, перемешайте.","Вбейте яйцо, постоянно помешивая, прогрейте 2 минуты.","Посыпьте зеленью и подавайте."],tips:"Для более сытного блюда добавьте тёртый сыр в конце.",servings:"На 2–3 порции"},
+  {name:"Фrittata с помидорами",time:"20 мин",ingredients:[{id:'egg',amt:'5 шт'},{id:'tomato',amt:'3 шт'},{id:'cheese',amt:'100 г'}],steps:["Взбейте яйца с солью, перцем и 2 ст.л. молока.","Помидоры нарежьте кольцами толщиной 5 мм.","Разогрейте сковороду с маслом, вылейте яйца.","Разложите помидоры сверху, посыпьте тёртым сыром.","Накройте крышкой, готовьте на малом огне 10 минут."],tips:"Фrittata идеально перевернуть на тарелку и вернуть на сковороду.",servings:"На 2–3 порции"},
+  {name:"Сковородная пицца",time:"20 мин",ingredients:[{id:'pasta',amt:'150 г'},{id:'tomato',amt:'2 шт'},{id:'cheese',amt:'150 г'},{id:'egg',amt:'1 шт'}],steps:["Смешайте 150 г муки с яйцом и 100 мл молока до однородного теста.","Вылейте тесто тонким слоем на разогретую сковороду.","Поджарьте 3 минуты, переверните.","Смажьте томатным соусом, посыпьте сыром.","Накройте крышкой и готовьте 5–7 минут до расплавления сыра."],tips:"Тесто можно замесить с вечера — оно станет эластичнее.",servings:"На 1–2 порции"},
+  {name:"Грибной крем-суп",time:"30 мин",ingredients:[{id:'mushroom',amt:'300 г'},{id:'milk',amt:'250 мл'},{id:'potato',amt:'2 шт'},{id:'garlic',amt:'3 зубчика'}],steps:["Обжарьте грибы с луком и измельчённым чесноком.","Добавьте картофель кубиками и 500 мл бульона.","Варите 15 минут до мягкости картофеля.","Взбейте блендером до кремообразной консистенции.","Влейте горячее молоко, посолите, подогрейте."],tips:"Подавайте с обжаренными грибными пластинками сверху.",servings:"На 3 порции"},
+  {name:"Куриный салат",time:"15 мин",ingredients:[{id:'chicken',amt:'300 г'},{id:'tomato',amt:'2 шт'},{id:'egg',amt:'3 шт'}],steps:["Отварите яйца вкрутую (10 минут), остудите и нарежьте кубиками.","Куриное филе отварите или обжарьте, нарежьте мелкими кусочками.","Помидоры нарежьте дольками или кубиками.","Смешайте все ингредиенты в миске.","Заправьте оливковым маслом, посолите и подавайте."],tips:"Можно добавить авокадо, огурцы или кукурузу.",servings:"На 2 порции"},
+  {name:"Запечённые яйца в грибах",time:"20 мин",ingredients:[{id:'egg',amt:'4 шт'},{id:'mushroom',amt:'8 шт'},{id:'cheese',amt:'80 г'}],steps:["Отделите шляпки от ножек грибов, ножки мелко нарежьте.","Шляпки выложите на противень грибом вверх.","В каждую шляпку аккуратно разбейте яйцо.","Посыпьте тёртым сыром и мелко нарезанными ножками.","Запекайте при 180°C 12–15 минут до готовности яиц."],tips:"Используйте крупные шляпки шампиньонов. Подавайте сразу.",servings:"На 2 порции"},
+  {name:"Крем-паста",time:"18 мин",ingredients:[{id:'pasta',amt:'250 г'},{id:'milk',amt:'200 мл'},{id:'cheese',amt:'150 г'},{id:'butter',amt:'30 г'}],steps:["Отварите пасту аль-денте в подсоленной воде.","В сотейнике растопите масло, добавьте 1 ст.л. муки, размешайте.","Постепенно влейте горячее молоко, помешивая до загустения.","Добавьте тёртый сыр, помешивайте до расплавления.","Заправьте пасту соусом и подавайте сразу."],tips:"Добавьте щепотку мускатного ореха для пикантности.",servings:"На 2–3 порции"},
+  {name:"Бутерброды с яйцом",time:"10 мин",ingredients:[{id:'bread',amt:'4 ломтика'},{id:'egg',amt:'3 шт'},{id:'butter',amt:'20 г'}],steps:["Отварите яйца вкрутую: 10 минут с момента закипания.","Нарежьте хлеб ломтиками и слегка подсушите на сковороде.","Смажьте каждый ломтик сливочным маслом.","Нарежьте яйца кольцами или кубиками, выложите на хлеб.","Посолите и подавайте к завтраку."],tips:"Хлеб можно поджарить с чесноком.",servings:"На 2 порции"},
+  {name:"Рисовый суп с морковью",time:"30 мин",ingredients:[{id:'rice',amt:'150 г'},{id:'carrot',amt:'2 шт'},{id:'onion',amt:'1 шт'}],steps:["Лук нарежьте мелкими кубиками, морковь натрите на тёрке.","Обжарьте лук с морковью на сковороде 5 минут.","Добавьте промытый рис, перемешайте.","Залейте 700 мл бульона или воды, варите 20 минут.","Посолите, посыпьте зеленью и подавайте."],tips:"Рис можно предварительно замочить на 30 минут.",servings:"На 3 порции"},
+  {name:"Сосиски в тесте",time:"25 мин",ingredients:[{id:'sausage',amt:'6 шт'},{id:'egg',amt:'2 шт'},{id:'bread',amt:'6 ломтиков'}],steps:["Взбейте яйца с 2 ст.л. молока и щепоткой соли.","Хлеб раскатайте скалкой, обрежьте корочки.","Обмакните хлеб в яичную смесь, оберните вокруг сосиски.","Плотно зафиксируйте концы.","Обжарьте на сковороде со всех сторон до золотистости."],tips:"Можно запекать в духовке при 180°C 15 минут.",servings:"На 2–3 порции"},
+  {name:"Яблочный пирог",time:"40 мин",ingredients:[{id:'apple',amt:'4 шт'},{id:'egg',amt:'3 шт'},{id:'butter',amt:'100 г'}],steps:["Яблоки нарежьте тонкими дольками, сбрызните лимоном.","Растопите масло, взбейте с яйцами и сахаром (150 г).","Добавьте 1,5 стакана муки и 1 ч.л. разрыхлителя.","Выложите яблоки в форму, залейте тестом.","Запекайте при 180°C 30–35 минут до золотистости."],tips:"Яблоки кислых сортов добавят пикантность.",servings:"На 6 порций"},
+  {name:"Чесночные тосты",time:"10 мин",ingredients:[{id:'bread',amt:'4 ломтика'},{id:'garlic',amt:'4 зубчика'},{id:'butter',amt:'40 г'},{id:'cheese',amt:'100 г'}],steps:["Растопите масло и смешайте с мелко нарезанным чесноком.","Смажьте каждый ломтик чесночным маслом.","Посыпьте тёртым сыром.","Выложите на противень и запекайте 5 минут при 200°C.","Подавайте горячими, пока сыр тянется."],tips:"Используйте батон — он хрустящее.",servings:"На 2 порции"},
+  {name:"Картофельные драники",time:"25 мин",ingredients:[{id:'potato',amt:'6 шт'},{id:'egg',amt:'2 шт'},{id:'onion',amt:'1 шт'}],steps:["Картофель очистите и натрите на мелкой тёрке.","Лук нарежьте мелкими кубиками или натрите.","Добавьте яйца, соль, перец и 2 ст.л. муки.","Хорошо перемешайте до однородного теста.","Жарьте лепёшки по 3 минуты с каждой стороны."],tips:"Отожмите лишний сок из картофеля — драники будут хрустящими.",servings:"На 3 порции"}
 ];
 
-let selectedProducts=new Set();
-let audioCtx=null;
+var selectedProducts=new Set();
+var matchedRecipes=[];
+var audioCtx=null;
 
 function getAudioCtx(){
-  if(!audioCtx) audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+  if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();
   return audioCtx;
 }
 
-/* ─── DOOR CREAK SOUND ─── */
-function playCreakSound(){
-  const ctx=getAudioCtx();
-  const now=ctx.currentTime;
-  const dur=0.9;
+function safeSound(fn){try{fn()}catch(e){}}
 
-  const osc1=ctx.createOscillator();
-  const osc2=ctx.createOscillator();
-  const gain1=ctx.createGain();
-  const gain2=ctx.createGain();
-  const filter=ctx.createBiquadFilter();
-
-  osc1.type='sawtooth';
-  osc1.frequency.setValueAtTime(80,now);
-  osc1.frequency.linearRampToValueAtTime(180,now+0.15);
-  osc1.frequency.linearRampToValueAtTime(60,now+0.4);
-  osc1.frequency.linearRampToValueAtTime(120,now+0.6);
-  osc1.frequency.linearRampToValueAtTime(40,now+dur);
-
-  osc2.type='square';
-  osc2.frequency.setValueAtTime(55,now);
-  osc2.frequency.linearRampToValueAtTime(140,now+0.2);
-  osc2.frequency.linearRampToValueAtTime(45,now+0.5);
-  osc2.frequency.linearRampToValueAtTime(90,now+dur);
-
-  filter.type='lowpass';
-  filter.frequency.setValueAtTime(600,now);
-  filter.frequency.linearRampToValueAtTime(1200,now+0.1);
-  filter.frequency.linearRampToValueAtTime(400,now+0.5);
-  filter.frequency.linearRampToValueAtTime(200,now+dur);
-  filter.Q.value=8;
-
-  gain1.gain.setValueAtTime(0,now);
-  gain1.gain.linearRampToValueAtTime(0.12,now+0.05);
-  gain1.gain.linearRampToValueAtTime(0.08,now+0.3);
-  gain1.gain.linearRampToValueAtTime(0.04,now+0.6);
-  gain1.gain.linearRampToValueAtTime(0,dur+now);
-
-  gain2.gain.setValueAtTime(0,now);
-  gain2.gain.linearRampToValueAtTime(0.06,now+0.03);
-  gain2.gain.linearRampToValueAtTime(0.03,now+0.4);
-  gain2.gain.linearRampToValueAtTime(0,dur+now);
-
-  osc1.connect(gain1).connect(filter).connect(ctx.destination);
-  osc2.connect(gain2).connect(filter);
-
-  osc1.start(now);osc1.stop(now+dur);
-  osc2.start(now);osc2.stop(now+dur);
-
-  // Noise burst for texture
-  const bufSize=ctx.sampleRate*dur;
-  const buf=ctx.createBuffer(1,bufSize,ctx.sampleRate);
-  const data=buf.getChannelData(0);
-  for(let i=0;i<bufSize;i++) data[i]=(Math.random()*2-1)*0.3;
-  const noise=ctx.createBufferSource();
-  noise.buffer=buf;
-  const ng=ctx.createGain();
-  const nf=ctx.createBiquadFilter();
-  nf.type='bandpass';nf.frequency.value=300;nf.Q.value=4;
-  ng.gain.setValueAtTime(0,now);
-  ng.gain.linearRampToValueAtTime(0.06,now+0.05);
-  ng.gain.linearRampToValueAtTime(0.02,now+0.3);
-  ng.gain.linearRampToValueAtTime(0,dur+now);
-  noise.connect(nf).connect(ng).connect(ctx.destination);
-  noise.start(now);noise.stop(now+dur);
-}
-
-/* ─── CLICK SOUND ─── */
 function playClickSound(){
-  const ctx=getAudioCtx();
-  const now=ctx.currentTime;
-  const osc=ctx.createOscillator();
-  const g=ctx.createGain();
-  osc.type='sine';
-  osc.frequency.setValueAtTime(800,now);
-  osc.frequency.exponentialRampToValueAtTime(400,now+0.08);
-  g.gain.setValueAtTime(0.1,now);
-  g.gain.exponentialRampToValueAtTime(0.001,now+0.1);
-  osc.connect(g).connect(ctx.destination);
-  osc.start(now);osc.stop(now+0.1);
+  safeSound(function(){
+    var ctx=getAudioCtx();
+    if(ctx.state==='suspended')ctx.resume();
+    var now=ctx.currentTime;
+    var osc=ctx.createOscillator();
+    var g=ctx.createGain();
+    osc.type='sine';
+    osc.frequency.setValueAtTime(800,now);
+    osc.frequency.exponentialRampToValueAtTime(400,now+0.08);
+    g.gain.setValueAtTime(0.1,now);
+    g.gain.exponentialRampToValueAtTime(0.001,now+0.1);
+    osc.connect(g).connect(ctx.destination);
+    osc.start(now);osc.stop(now+0.1);
+  });
 }
 
-/* ─── PARTICLE SYSTEM ─── */
-const canvas=document.getElementById('particles');
-const pCtx=canvas.getContext('2d');
-let particles=[];
+function playCreakSound(){
+  safeSound(function(){
+    var ctx=getAudioCtx();
+    if(ctx.state==='suspended')ctx.resume();
+    var now=ctx.currentTime;
+    var dur=0.9;
+    var o1=ctx.createOscillator(),o2=ctx.createOscillator();
+    var g1=ctx.createGain(),g2=ctx.createGain();
+    var f=ctx.createBiquadFilter();
+    o1.type='sawtooth';
+    o1.frequency.setValueAtTime(80,now);
+    o1.frequency.linearRampToValueAtTime(180,now+0.15);
+    o1.frequency.linearRampToValueAtTime(60,now+0.4);
+    o1.frequency.linearRampToValueAtTime(120,now+0.6);
+    o1.frequency.linearRampToValueAtTime(40,now+dur);
+    o2.type='square';
+    o2.frequency.setValueAtTime(55,now);
+    o2.frequency.linearRampToValueAtTime(140,now+0.2);
+    o2.frequency.linearRampToValueAtTime(45,now+0.5);
+    o2.frequency.linearRampToValueAtTime(90,now+dur);
+    f.type='lowpass';f.frequency.setValueAtTime(600,now);
+    f.frequency.linearRampToValueAtTime(1200,now+0.1);
+    f.frequency.linearRampToValueAtTime(400,now+0.5);
+    f.frequency.linearRampToValueAtTime(200,now+dur);f.Q.value=8;
+    g1.gain.setValueAtTime(0,now);
+    g1.gain.linearRampToValueAtTime(0.12,now+0.05);
+    g1.gain.linearRampToValueAtTime(0.08,now+0.3);
+    g1.gain.linearRampToValueAtTime(0.04,now+0.6);
+    g1.gain.linearRampToValueAtTime(0,dur+now);
+    g2.gain.setValueAtTime(0,now);
+    g2.gain.linearRampToValueAtTime(0.06,now+0.03);
+    g2.gain.linearRampToValueAtTime(0.03,now+0.4);
+    g2.gain.linearRampToValueAtTime(0,dur+now);
+    o1.connect(g1).connect(f).connect(ctx.destination);
+    o2.connect(g2).connect(f);
+    o1.start(now);o1.stop(now+dur);
+    o2.start(now);o2.stop(now+dur);
+    var bs=ctx.sampleRate*dur;
+    var buf=ctx.createBuffer(1,bs,ctx.sampleRate);
+    var d=buf.getChannelData(0);
+    for(var i=0;i<bs;i++)d[i]=(Math.random()*2-1)*0.3;
+    var n=ctx.createBufferSource();n.buffer=buf;
+    var ng=ctx.createGain(),nf=ctx.createBiquadFilter();
+    nf.type='bandpass';nf.frequency.value=300;nf.Q.value=4;
+    ng.gain.setValueAtTime(0,now);
+    ng.gain.linearRampToValueAtTime(0.06,now+0.05);
+    ng.gain.linearRampToValueAtTime(0.02,now+0.3);
+    ng.gain.linearRampToValueAtTime(0,dur+now);
+    n.connect(nf).connect(ng).connect(ctx.destination);
+    n.start(now);n.stop(now+dur);
+  });
+}
+
+function playOpenSound(){
+  safeSound(function(){
+    var ctx=getAudioCtx();
+    if(ctx.state==='suspended')ctx.resume();
+    var now=ctx.currentTime;
+    var osc=ctx.createOscillator();
+    var g=ctx.createGain();
+    osc.type='sine';
+    osc.frequency.setValueAtTime(300,now);
+    osc.frequency.exponentialRampToValueAtTime(600,now+0.15);
+    g.gain.setValueAtTime(0.08,now);
+    g.gain.exponentialRampToValueAtTime(0.001,now+0.2);
+    osc.connect(g).connect(ctx.destination);
+    osc.start(now);osc.stop(now+0.2);
+  });
+}
+
+var canvas=document.getElementById('particles');
+var pCtx=canvas.getContext('2d');
+var particles=[];
 function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
 window.addEventListener('resize',resizeCanvas);
 resizeCanvas();
 
-class Particle{
-  constructor(x,y,color,size,speedX,speedY,life){
-    this.x=x;this.y=y;this.color=color;
-    this.size=size;this.speedX=speedX;this.speedY=speedY;
-    this.life=life;this.maxLife=life;this.rotation=Math.random()*6.28;
-    this.rotSpeed=(Math.random()-.5)*.1;
-  }
-  update(){
-    this.x+=this.speedX;this.y+=this.speedY;
-    this.speedY+=0.03;this.life--;
-    this.rotation+=this.rotSpeed;
-    this.speedX*=0.99;
-  }
-  draw(ctx){
-    const alpha=this.life/this.maxLife;
-    ctx.save();
-    ctx.translate(this.x,this.y);
-    ctx.rotate(this.rotation);
-    ctx.globalAlpha=alpha;
-    ctx.fillStyle=this.color;
-    ctx.shadowColor=this.color;
-    ctx.shadowBlur=8;
-    ctx.fillRect(-this.size/2,-this.size/2,this.size,this.size);
-    ctx.restore();
-  }
+function Particle(x,y,color,size,speedX,speedY,life){
+  this.x=x;this.y=y;this.color=color;this.size=size;
+  this.speedX=speedX;this.speedY=speedY;
+  this.life=life;this.maxLife=life;
+  this.rotation=Math.random()*6.28;this.rotSpeed=(Math.random()-.5)*.1;
 }
+Particle.prototype.update=function(){this.x+=this.speedX;this.y+=this.speedY;this.speedY+=0.03;this.life--;this.rotation+=this.rotSpeed;this.speedX*=0.99};
+Particle.prototype.draw=function(ctx){
+  var alpha=this.life/this.maxLife;
+  ctx.save();ctx.translate(this.x,this.y);ctx.rotate(this.rotation);
+  ctx.globalAlpha=alpha;ctx.fillStyle=this.color;ctx.shadowColor=this.color;ctx.shadowBlur=8;
+  ctx.fillRect(-this.size/2,-this.size/2,this.size,this.size);ctx.restore();
+};
 
 function emitParticles(x,y,count,colors,spread){
-  for(let i=0;i<count;i++){
-    const angle=Math.random()*Math.PI*2;
-    const speed=Math.random()*spread+1;
-    const color=colors[Math.floor(Math.random()*colors.length)];
-    particles.push(new Particle(
-      x,y,color,
-      Math.random()*4+2,
-      Math.cos(angle)*speed,
-      Math.sin(angle)*speed-2,
-      Math.random()*40+30
-    ));
+  for(var i=0;i<count;i++){
+    var angle=Math.random()*Math.PI*2;
+    var speed=Math.random()*spread+1;
+    var color=colors[Math.floor(Math.random()*colors.length)];
+    particles.push(new Particle(x,y,color,Math.random()*4+2,
+      Math.cos(angle)*speed,Math.sin(angle)*speed-2,Math.random()*40+30));
   }
 }
 
 function animateParticles(){
   pCtx.clearRect(0,0,canvas.width,canvas.height);
-  particles=particles.filter(p=>p.life>0);
-  particles.forEach(p=>{p.update();p.draw(pCtx)});
+  particles=particles.filter(function(p){return p.life>0});
+  particles.forEach(function(p){p.update();p.draw(pCtx)});
   requestAnimationFrame(animateParticles);
 }
 animateParticles();
 
-/* ─── RENDER FRIDGE ─── */
 function renderFridge(){
-  const grid=document.getElementById('fridgeGrid');
-  PRODUCTS.forEach((p,i)=>{
-    const tile=document.createElement('div');
+  var grid=document.getElementById('fridgeGrid');
+  PRODUCTS.forEach(function(p,i){
+    var tile=document.createElement('div');
     tile.className='product-tile pop-in';
-    tile.style.animationDelay=`${i*40}ms`;
+    tile.style.animationDelay=i*40+'ms';
     tile.dataset.id=p.id;
-    tile.innerHTML=`<span class="icon">${p.emoji}</span><span class="name">${p.name}</span>`;
-    tile.addEventListener('click',()=>{
+    tile.innerHTML='<span class="icon">'+p.emoji+'</span><span class="name">'+p.name+'</span>';
+    tile.addEventListener('click',function(){
       playClickSound();
       toggleProduct(p.id,tile);
-      const rect=tile.getBoundingClientRect();
+      var rect=tile.getBoundingClientRect();
       emitParticles(rect.left+rect.width/2,rect.top+rect.height/2,8,
         ['#ffd700','#ffaa00','#ffe066','#fff4b0'],3);
     });
@@ -647,86 +355,102 @@ function toggleProduct(id,tile){
   }
 }
 
-/* ─── FIND RECIPES ─── */
 function findRecipes(){
-  const area=document.getElementById('recipesArea');
-  const hint=document.getElementById('hintArea');
+  var area=document.getElementById('recipesArea');
+  var hint=document.getElementById('hintArea');
   area.innerHTML='';
-
   if(selectedProducts.size===0){
     hint.style.display='block';
-    hint.innerHTML=`<div class="hint fade-in"><span class="hint-icon">🧑‍🍳</span>Холодильник пуст!<br>Выберите хотя бы один продукт</div>`;
+    hint.innerHTML='<div class="hint fade-in"><span class="hint-icon">🧑‍🍳</span>Холодильник пуст!<br>Выберите хотя бы один продукт</div>';
     return;
   }
   hint.style.display='none';
-
-  const matched=RECIPES.filter(r=>
-    r.ingredients.some(ing=>selectedProducts.has(ing))
-  );
+  var matched=RECIPES.filter(function(r){
+    return r.ingredients.some(function(ing){return selectedProducts.has(ing.id)});
+  });
   if(matched.length===0){
-    area.innerHTML=`<div class="hint fade-in"><span class="hint-icon">🤷</span>Рецептов с такими продуктами нет.<br>Попробуйте другие!</div>`;
+    area.innerHTML='<div class="hint fade-in"><span class="hint-icon">🤷</span>Рецептов с такими продуктами нет.<br>Попробуйте выбрать другие!</div>';
     return;
   }
-
-  let html=`<p class="recipes-title fade-in">🏠 Найдено рецептов: ${matched.length}</p>`;
-  matched.forEach((r,i)=>{
-    const labels=r.ingredients.map(id=>{
-      const p=PRODUCTS.find(x=>x.id===id);
-      return p?`${p.emoji} ${p.name}`:id;
+  matchedRecipes=matched;
+  var html='<p class="recipes-title fade-in">🏠 Найдено рецептов: '+matched.length+'</p>';
+  matched.forEach(function(r,i){
+    var labels=r.ingredients.filter(function(ing){return selectedProducts.has(ing.id)}).map(function(ing){
+      var p=PRODUCTS.find(function(x){return x.id===ing.id});
+      var name=p?p.emoji+' '+p.name:ing.id;
+      return '<span class="ing-tag">'+name+'<span class="ing-amt">'+ing.amt+'</span></span>';
     });
-    html+=`
-      <div class="recipe-card" id="card${i}" style="animation-delay:${i*0.15}s">
-        <div class="door-container" onclick="openCard(${i})">
-          <div class="door-frame"></div>
-          <div class="door-left"><div class="door-handle-left"></div></div>
-          <div class="door-right"><div class="door-handle-right"></div></div>
-          <div class="door-light"></div>
-          <div class="recipe-content">
-            <div class="recipe-header">
-              <span class="recipe-name">${r.name}</span>
-              <span class="recipe-time">⏱ ${r.time}</span>
-            </div>
-            <div class="recipe-ingredients">
-              ${labels.map(l=>`<span>${l}</span>`).join('')}
-            </div>
-            <ol class="recipe-steps">
-              ${r.steps.map(s=>`<li>${s}</li>`).join('')}
-            </ol>
-          </div>
-        </div>
-      </div>`;
+    html+='<div class="recipe-card" id="card'+i+'" style="animation-delay:'+i*0.15+'s">'+
+      '<div class="door-container" onclick="openCard('+i+',event)">'+
+      '<div class="door-frame"></div>'+
+      '<div class="door-left"><div class="door-handle-left"></div></div>'+
+      '<div class="door-right"><div class="door-handle-right"></div></div>'+
+      '<div class="door-light"></div>'+
+      '<div class="recipe-content" onclick="openFullRecipe('+i+');event.stopPropagation()">'+
+      '<div class="recipe-header"><span class="recipe-name">'+r.name+'</span><span class="recipe-time">⏱ '+r.time+'</span></div>'+
+      '<div class="recipe-ingredients">'+labels.join('')+'</div>'+
+      '<ol class="recipe-steps">'+r.steps.map(function(s){return '<li>'+s+'</li>'}).join('')+'</ol>'+
+      '<div class="open-hint">Нажмите для полного рецепта →</div>'+
+      '</div></div></div>';
   });
-  html+=`<div class="back-wrap"><button class="btn-back" onclick="goBack()">🔄 Выбрать другие продукты</button></div>`;
+  html+='<div class="back-wrap"><button class="btn-back" onclick="goBack()">🔄 Выбрать другие продукты</button></div>';
   area.innerHTML=html;
-
-  // Auto-open doors with stagger
-  setTimeout(()=>{
-    matched.forEach((_,i)=>{
-      setTimeout(()=>openCard(i), i*400+200);
-    });
+  setTimeout(function(){
+    matched.forEach(function(_,i){setTimeout(function(){openCard(i)},i*400+200)});
   },100);
 }
 
-function openCard(i){
-  const card=document.getElementById('card'+i);
+function openCard(i,e){
+  if(e)e.stopPropagation();
+  var card=document.getElementById('card'+i);
   if(card&&!card.classList.contains('opening')){
     card.classList.add('opening');
     playCreakSound();
-    // Particles burst from center
-    const rect=card.getBoundingClientRect();
-    const cx=rect.left+rect.width/2;
-    const cy=rect.top+rect.height/2;
-    emitParticles(cx,cy,25,['#ffd700','#ff6600','#ff3300','#ffe066','#fff'],5);
+    var rect=card.getBoundingClientRect();
+    emitParticles(rect.left+rect.width/2,rect.top+rect.height/2,25,
+      ['#ffd700','#ff6600','#ff3300','#ffe066','#fff'],5);
   }
 }
 
+function openFullRecipe(idx){
+  var r=matchedRecipes[idx];
+  if(!r)return;
+  playOpenSound();
+  var labels=r.ingredients.filter(function(ing){return selectedProducts.has(ing.id)}).map(function(ing){
+    var p=PRODUCTS.find(function(x){return x.id===ing.id});
+    var name=p?p.emoji+' '+p.name:ing.id;
+    return '<span class="ing-tag">'+name+'<span class="ing-amt">'+ing.amt+'</span></span>';
+  });
+  document.getElementById('modalContent').innerHTML=
+    '<div class="modal-title">'+r.name+'</div>'+
+    '<span class="modal-time">⏱ '+r.time+'</span>'+
+    (r.servings?'<span class="modal-time" style="margin-left:.5rem">👥 '+r.servings+'</span>':'')+
+    '<div class="modal-divider"></div>'+
+    '<div class="modal-section-title">Ингредиенты</div>'+
+    '<div class="modal-ingredients">'+labels.join('')+'</div>'+
+    '<div class="modal-divider"></div>'+
+    '<div class="modal-section-title">Приготовление</div>'+
+    '<ol class="modal-steps">'+r.steps.map(function(s){return '<li>'+s+'</li>'}).join('')+'</ol>'+
+    (r.tips?'<div class="modal-tips"><strong>💡 Совет:</strong> '+r.tips+'</div>':'');
+  document.getElementById('modalOverlay').classList.add('active');
+  document.body.style.overflow='hidden';
+}
+
+function closeModal(e){
+  if(e&&e.target&&e.target!==document.getElementById('modalOverlay'))return;
+  document.getElementById('modalOverlay').classList.remove('active');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal()});
+
 function goBack(){
   selectedProducts.clear();
-  document.querySelectorAll('.product-tile.selected').forEach(t=>t.classList.remove('selected'));
+  var tiles=document.querySelectorAll('.product-tile.selected');
+  for(var i=0;i<tiles.length;i++)tiles[i].classList.remove('selected');
   document.getElementById('recipesArea').innerHTML='';
-  const hint=document.getElementById('hintArea');
+  var hint=document.getElementById('hintArea');
   hint.style.display='block';
-  hint.innerHTML=`<div class="hint fade-in"><span class="hint-icon">🧊</span>Нажмите на продукты в холодильнике,<br>чтобы подобрать рецепты</div>`;
+  hint.innerHTML='<div class="hint fade-in"><span class="hint-icon">🧊</span>Нажмите на продукты в холодильнике,<br>чтобы подобрать рецепты</div>';
 }
 
 renderFridge();
